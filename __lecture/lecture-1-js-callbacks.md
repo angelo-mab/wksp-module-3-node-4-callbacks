@@ -49,10 +49,13 @@ _Examples of operations that might take time?_
 What is a callback?
 
 ---
+- ex: when you call you're friend, they'll call you back
 
 - A callback is a function that is to be executed, or _called_ after another function has finished executing.
 
 - Any functions that is passed as an argument to another function is a callback function.
+    - eventListeners
+    - methods, .forEach, .find, .toString
 
 ---
 
@@ -62,6 +65,9 @@ console.log('do second thing');
 console.log('do third thing');
 
 // expected output
+// do first thing
+// do second thing
+// do third thing
 
 ```
 
@@ -79,6 +85,8 @@ setTimeout(function() {
     console.log('do second thing');
 }, 2000);
 console.log('do third thing');
+
+// this will print out to the console - first, third, second.
 ```
 
 ---
@@ -134,6 +142,13 @@ function tellWorld(message, callback) {
     console.log(message);
     callback();
 };
+
+function runaway(message, callback) {
+    console.log(message);
+    callback();
+}
+
+tellWorld('message 1', runaway('boo', tellWorld()));
 ```
 
 ---
